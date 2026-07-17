@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_force_cancel" model="ir.ui.view">
+        <field name="name">sale.order.form.force.cancel</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_force_cancel" type="object" string="Force Cancel"
+                        groups="sales_team.group_sale_manager"
+                        confirm="This will cancel the order, its transfers and invoices, reversing stock moves. Continue?"
+                        attrs="{'invisible': [('state', '!=', 'sale')]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
